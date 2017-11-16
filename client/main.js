@@ -43,12 +43,7 @@ Template.add.events({
         const quantity = target.quantity.value;
         const priority = target.priority.value;
 
-        // items.insert({
-        //     name,
-        //     quantity,
-        //     price,
-        //     createdAt: new Date()
-        // });
+        name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 
         Meteor.call('items.insert', name, quantity, priority);
 

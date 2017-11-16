@@ -2,20 +2,22 @@
     <title>Shopping List</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 
 <body>
     <nav class="teal">
         <div class="container">
             <div clas="nav-wrapper">
-                <a href="#" class="brand-logo">iBuy</a>
+                <a href="#" class="brand-logo center">iBuy</a>
                 <ul id="nav-mobile" class="right">
                     {{#if currentUser}}
                         <li class="nav-item">
-                            <a class="waves-effect waves-light btn modal-trigger" href="#addModal"> Add Item</a>
+                            <a class="waves-effect waves-light btn modal-trigger" href="#addModal" style="padding: 0px 14px 0px 14px">Add Item</a>
                         </li>
                     {{/if}}
+                </ul>
+                <ul class="left">
                     <li class="nav-item">
                         {{> loginButtons}}
                     </li>
@@ -28,7 +30,15 @@
         {{#if currentUser}}
             {{> sort}}
             <ul class="collection">
-                <li class="collection-item"><strong style="margin-right: 40%">a</strong><strong style="color: black; margin-right: 10%">a</strong>
+                <li class="collection-item">
+                    <table>
+                        <tr>
+                            <td style="padding: 0px; width: 40%">Name</td>
+                            <td style="padding: 0px; width: 20%">Qty</td>
+                            <td style="padding: 0px; width: 20%">Priority</td>
+                            <td style="padding: 0px; width: 20%"></td>
+                        </tr>
+                    </table>
                 </li>
                 {{#each items}}
                     {{> item}}
@@ -50,10 +60,14 @@
 
 <template name="item">
     <li class="collection-item ">
-        {{name}}
-        {{quantity}}
-        {{priority}}
-        <a href="#" class="delete-item secondary-content"><i class="material-icons">done</i></a>
+        <table>
+            <tr>
+                <td style="padding: 0px; padding-top: 0px; padding-bottom: 0px; width: 40%">{{name}}</td>
+                <td style="padding: 0px; width: 20%">{{quantity}}</td>
+                <td style="padding: 0px; width: 20%">{{priority}}</td>
+                <td style="padding: 0px; width: 20%"><a href="#" class="delete-item secondary-content"><i class="material-icons">done</i></a></td>
+            </tr>
+        </table>
     </li>
 </template>
 
@@ -81,6 +95,6 @@
 
 <template name="sort">
     Sort By:
-    <button type="button" class="priority-sort">Priority</button>
-    <button type="button" class="name-sort">Name</button>
+    <input type="button" class="priority-sort waves-effect waves-green btn" value="Priority" style="margin: 0px 10px 0px 10px; padding: 0px 14px 0px 14px">
+    <input type="button" class="name-sort waves-effect waves-green btn" value="Name" style="margin: 0px 10px 0px 10px; padding: 0px 14px 0px 14px">
 </template>
