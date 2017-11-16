@@ -78,7 +78,7 @@ Template["item"] = new Template("Template.item", (function() {                  
     return Spacebars.mustache(view.lookup("quantity"));                                                          // 56
   }), "\n        ", Blaze.View("lookup:priority", function() {                                                   // 57
     return Spacebars.mustache(view.lookup("priority"));                                                          // 58
-  }), HTML.Raw('\n        <a href="#" class="delete-item secondary-content"><i class="material-icons">delete_forever</i></a>\n    '));
+  }), HTML.Raw('\n        <a href="#" class="delete-item secondary-content"><i class="material-icons">done</i></a>\n    '));
 }));                                                                                                             // 60
                                                                                                                  // 61
 Template.__checkName("add");                                                                                     // 62
@@ -224,24 +224,26 @@ var items = new Mongo.Collection("items");                                      
 sortType = "priority";                                                                                           // 7
 Meteor.methods({                                                                                                 // 9
     'items.insert': function (name, quantity, priority) {                                                        // 10
-        if (!Meteor.userId()) {                                                                                  // 12
-            throw new Meteor.Error("You are not authorized to do that.");                                        // 13
-        }                                                                                                        // 14
+        priority = parseInt(priority);                                                                           // 12
                                                                                                                  //
-        items.insert({                                                                                           // 16
-            name: name,                                                                                          // 17
-            quantity: quantity,                                                                                  // 18
-            priority: priority                                                                                   // 19
-        });                                                                                                      // 16
-    },                                                                                                           // 21
-    'items.remove': function (item) {                                                                            // 23
-        check(item._id, String);                                                                                 // 24
-        items.remove(item._id);                                                                                  // 26
-    },                                                                                                           // 27
-    'setSort': function (type) {                                                                                 // 29
-        check(type, String);                                                                                     // 30
-        sortType = type;                                                                                         // 31
-    }                                                                                                            // 32
+        if (!Meteor.userId()) {                                                                                  // 14
+            throw new Meteor.Error("You are not authorized to do that.");                                        // 15
+        }                                                                                                        // 16
+                                                                                                                 //
+        items.insert({                                                                                           // 18
+            name: name,                                                                                          // 19
+            quantity: quantity,                                                                                  // 20
+            priority: priority                                                                                   // 21
+        });                                                                                                      // 18
+    },                                                                                                           // 23
+    'items.remove': function (item) {                                                                            // 25
+        check(item._id, String);                                                                                 // 26
+        items.remove(item._id);                                                                                  // 28
+    },                                                                                                           // 29
+    'setSort': function (type) {                                                                                 // 31
+        check(type, String);                                                                                     // 32
+        sortType = type;                                                                                         // 33
+    }                                                                                                            // 34
 });                                                                                                              // 9
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -17,7 +17,7 @@
  under the License.
  */
 //
-// Prefix header for all source files of the 'project3' target in the 'project3' project
+// Prefix header for all source files of the 'iBuy' target in the 'iBuy' project
 //
 
 #ifdef __OBJC__

@@ -34,7 +34,7 @@
     <feature name="CDVWKWebViewEngine">
         <param name="ios-package" value="CDVWKWebViewEngine" />
     </feature>
-    <name>project3</name>
+    <name>iBuy</name>
     <description>New Meteor Mobile App</description>
     <author email="n/a" href="n/a">A Meteor Developer</author>
     <content src="http://localhost:12712/" />
